@@ -6,16 +6,19 @@ import { Button } from "@/components/ui/button";
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className="grid gap-5 ml-4">
       <p>LandingPage (Unprotected)</p>
 
-      {/* Buttons */}
       <Link href="/sign-in">
         <Button>Login</Button>
       </Link>
 
       <Link href="/sign-up">
         <Button>Register</Button>
+      </Link>
+
+      <Link href="/dashboard">
+        <Button>Dashboard</Button>
       </Link>
     </div>
   );
