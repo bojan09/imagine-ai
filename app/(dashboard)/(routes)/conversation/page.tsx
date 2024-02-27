@@ -53,7 +53,6 @@ const ConversationPage = () => {
       setMessages((current) => [...current, userMessage, response.data]);
       form.reset();
     } catch (error) {
-      // TODO: Open Pro Modal
       console.log(error);
     } finally {
       router.refresh();

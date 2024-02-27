@@ -9,9 +9,6 @@ import { useRouter } from "next/navigation";
 // utils
 import { Music } from "lucide-react";
 
-// openai
-import { ChatCompletionRequestMessage } from "openai";
-
 // components
 import { Heading } from "@/components/heading";
 import { Empty } from "@/components/empty";
@@ -44,7 +41,6 @@ const MusicPage = () => {
 
       form.reset();
     } catch (error) {
-      // TODO: Open Pro Modal
       console.log(error);
     } finally {
       router.refresh();
