@@ -19,7 +19,9 @@ export async function POST(req: Request) {
     }
 
     if (!configuration.apiKey) {
-      return new NextResponse("OpenAI API Key not configured");
+      return new NextResponse("OpenAI API Key not configured.", {
+        status: 500,
+      });
     }
 
     if (!messages) {
@@ -34,6 +36,6 @@ export async function POST(req: Request) {
     return NextResponse.json(response.data.choices[0].message);
   } catch (error) {
     console.log("[CONVERSATION_ERROR]", error);
-    return new NextResponse("Internal error", { status: 500 });
+    return new NextResponse("Internal Error", { status: 500 });
   }
 }
