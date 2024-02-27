@@ -9,7 +9,6 @@ import Image from "next/image";
 
 // utils
 import { DownloadIcon, ImageIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 // components
 import { Heading } from "@/components/heading";
@@ -29,7 +28,6 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 // constant
 import { amountOptions, formSchema, resolutionOptions } from "./constants";
 import { Card, CardFooter } from "@/components/ui/card";
-import { Secular_One } from "next/font/google";
 
 const ImagePage = () => {
   const router = useRouter();
@@ -89,7 +87,7 @@ const ImagePage = () => {
                     <Input
                       className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                       disabled={isLoading}
-                      placeholder="I can generate any image you can imagine. Wanna try?"
+                      placeholder="I can generate any image you can imagine."
                       {...field}
                     />
                   </FormControl>
