@@ -5,9 +5,10 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 // utils
-import { ImageIcon } from "lucide-react";
+import { DownloadIcon, ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // components
@@ -27,8 +28,8 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 
 // constant
 import { amountOptions, formSchema, resolutionOptions } from "./constants";
-import { UserAvatar } from "@/components/user-avatar";
-import { BotAvatar } from "@/components/bot-avatar";
+import { Card, CardFooter } from "@/components/ui/card";
+import { Secular_One } from "next/font/google";
 
 const ImagePage = () => {
   const router = useRouter();
@@ -170,7 +171,25 @@ const ImagePage = () => {
             <Empty label="No images generated." />
           </div>
         )}
-        <div className="">Images are generated here</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8 mx-8">
+          {images.map((src) => (
+            <Card key={src} className="rounded-lg overflow-hidden">
+              <div className="relative aspect-square">
+                <Image alt="image" fill src={src} />
+              </div>
+              <CardFooter className="p-2">
+                <Button
+                  onClick={() => window.open(src)}
+                  variant="secondary"
+                  className="w-full"
+                >
+                  <DownloadIcon className="h-4 w-4 mr-2" />
+                  Download
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );
