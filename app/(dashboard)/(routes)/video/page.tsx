@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 // utils
 import { Music, VideoIcon } from "lucide-react";
@@ -42,8 +43,8 @@ const VideoPage = () => {
       setVideo(response.data[0]);
 
       form.reset();
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error("Something went wrong");
     } finally {
       router.refresh();
     }

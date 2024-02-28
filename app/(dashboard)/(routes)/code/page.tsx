@@ -6,6 +6,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import toast from "react-hot-toast";
 
 // utils
 import { Code } from "lucide-react";
@@ -53,8 +54,8 @@ const CodePage = () => {
       });
       setMessages((current) => [...current, userMessage, response.data]);
       form.reset();
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error("Something went wrong");
     } finally {
       router.refresh();
     }

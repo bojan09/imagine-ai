@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 // utils
 import { MessageSquare } from "lucide-react";
@@ -44,7 +45,6 @@ const ConversationPage = () => {
         role: "user",
         content: values.prompt,
       };
-
       const newMessages = [...messages, userMessage];
 
       const response = await axios.post("/api/conversation", {
@@ -52,7 +52,8 @@ const ConversationPage = () => {
       });
       setMessages((current) => [...current, userMessage, response.data]);
       form.reset();
-    } catch (error) {
+    } catch (error: any) {
+      toast.error("Something went wrong");
       console.log(error);
     } finally {
       router.refresh();

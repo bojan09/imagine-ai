@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 // utils
 import { Music } from "lucide-react";
@@ -40,8 +41,8 @@ const MusicPage = () => {
       setMusic(response.data.audio);
 
       form.reset();
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error("Something went wrong");
     } finally {
       router.refresh();
     }

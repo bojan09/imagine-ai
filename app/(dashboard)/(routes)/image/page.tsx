@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import Image from "next/image";
 
 // utils
@@ -55,8 +56,8 @@ const ImagePage = () => {
       setImages(urls);
 
       form.reset();
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error("Something went wrong");
     } finally {
       router.refresh();
     }
